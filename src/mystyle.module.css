@@ -1,0 +1,20 @@
+.biggreen{
+  background-color: aliceblue;
+  
+    color: rgb(30, 63, 23);
+    padding: 40px;
+    
+    font-family: Sans-Serif;
+    text-align: center;
+  }
+
+  .bigred{
+    color: red;
+    background-color: aliceblue;
+    }
+
+  .bigblue{
+    color:blue;
+  }
+
+
