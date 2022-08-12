@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter,
@@ -13,28 +12,15 @@ import NotFound from './notfound'
 import ValidateForm from './newformreg';
 import ValidatedForm from './validateform';
 import Dashboard from './dashboard';
-import { Nav } from 'react-bootstrap';
-import Navbar from 'react-bootstrap/Navbar';
-import {Container} from 'react-bootstrap';
-import Parent from './parent';
-
-
-
-import { Outlet, Link } from "react-router-dom";
+import Reducer from './reducer.js';
+import { ReactDOM } from 'react';
+// import Portal from './portal';
 
 function App(){
 
-
- return(
-  <>
-
-  {/* <Parent/> */}
-
-
-  
-
- 
-  <BrowserRouter>
+  return(
+    <>
+    <BrowserRouter>
 
      
   
@@ -45,15 +31,20 @@ function App(){
         <Route path="/register" element={<ValidateForm />} />
         <Route path="/login" element={<ValidatedForm />} />
         <Route path="/dashboard" element={<Dashboard />}/>
+        <Route path="/reducer" element={<Reducer />}/>
+
         <Route path="*" element={<NotFound/>}/>       
       
     </Routes>
    
    
-  </BrowserRouter>
-  </> 
-)
+  </BrowserRouter> 
+  </>
+
+  )
 }
+
+
 
 
 

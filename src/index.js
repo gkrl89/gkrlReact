@@ -10,6 +10,12 @@ root.render(
     <App/>
   </React.StrictMode>
 );
+// const rootportal = ReactDOM.createRoot(document.getElementById('portal'));
+// rootportal.render(
+//   <React.StrictMode>
+//     <h1>rootportal</h1>
+//   </React.StrictMode>
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

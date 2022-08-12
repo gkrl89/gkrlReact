@@ -5,8 +5,9 @@ import { Container, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './mystyle.css';
-import Modalform from './components/Modal';
-import { Outlet, Link } from "react-router-dom";
+
+import ModalForm from './components/Modalform';
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
@@ -231,7 +232,7 @@ function ValidateForm() {
              <p > Already a User? Log in </p>
              </Link>
              
-             { showModal  && <Modalform />}
+             { showModal  && <ModalForm/>}
              </Container>
              </>
              )

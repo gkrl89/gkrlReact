@@ -17,7 +17,7 @@ class Car extends React.Component {
     changeColor = () => {
       this.setState({color: " Blue "});
     }
-    getSnapshotBeforeUpdate(prevProps,prevState) {
+    getSnapshotBeforeUpdate(_prevProps,prevState) {
         document.getElementById("div1").innerHTML =
         "Before the update, the car was in " + prevState.color + "color";
     }

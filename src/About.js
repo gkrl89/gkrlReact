@@ -1,6 +1,6 @@
 import React from 'react'  
 import { Container, Navbar, Nav} from 'react-bootstrap';
-import { Outlet, Link  } from "react-router-dom";
+import {Link  } from "react-router-dom";
  
 class About extends React.Component {  
   render() {  
@@ -22,8 +22,10 @@ class About extends React.Component {
             <Nav.Link as= {Link} to ={"/Contact"}>Contact</Nav.Link>
             <Nav.Link  as= {Link} to ={"/register"}>Register</Nav.Link>
             <Nav.Link as= {Link} to ={"/login"}>Login</Nav.Link>
+            <Nav.Link as= {Link} to ={"/reducer"}>reducer</Nav.Link>
+            
           </Nav>
-          >
+          
          
           
         </Container>
