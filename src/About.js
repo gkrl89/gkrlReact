@@ -25,6 +25,8 @@ class About extends React.Component {
             <Nav.Link as= {Link} to ={"/reducer"}>reducer</Nav.Link>
             <Nav.Link as= {Link} to ={"/todo"}>TodoApp</Nav.Link>
             <Nav.Link as= {Link} to ={"/userform"}>UserForm</Nav.Link>
+            <Nav.Link as= {Link} to ={"/sampleapi"}>Product</Nav.Link>
+            
             
           </Nav>
           

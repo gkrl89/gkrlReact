@@ -3,15 +3,15 @@ import { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import {Button} from "react-bootstrap";
 import axios from "axios";
-import { type } from "@testing-library/user-event/dist/type";
+
 
 
 export default function UserForm(){
 
-    const initialState  = {
+    const product  = {
         item : "",
         price:"",
-        error:false
+        
     }
     
     function reducer(state, action){
@@ -20,38 +20,43 @@ export default function UserForm(){
             case "add":
             return 
             {
-                axios.put('', article)
+               
             }
                               
-            
-           
-             state.error(false);
-
-            
-            
-
             case "delete":
                 return
-                state.error(false);
+                
 
 
             default:
-                return state.error(true);
+                return state
                 
         }
 
     }
 
-    const[updatedState, dispatch] = useReducer(reducer, initialState)
+    const[updatedState, dispatch] = useReducer(reducer, product)
 
     const formAdd=(e)=> {
 
         e.preventDefault();
 
-        dispatch({type:"add"})
-    }
+        const postData= {product} 
+        console.log(postData)
+        axios.post("https://62fb40bbabd610251c040f32.mockapi.io/inventory" , postData)
+    .then((res) => {
+        console.log(res)
+    })
 
-    const formDelete=(e)=> {
+    .catch ((err) =>{
+        console.log(err)
+    })
+
+
+
+        
+    } 
+    const formDelete =(e)=> {
 
         e.preventDefault();
 
@@ -80,4 +85,5 @@ export default function UserForm(){
         </div>
     )
 }
+
 
