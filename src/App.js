@@ -16,7 +16,7 @@ import Reducer from './reducer.js';
 import TodoApp from './todo.js';
 import { ReactDOM } from 'react';
 import UserForm from './userform';
-// import Portal from './portal';
+import Portal from './portal';
 
 function App(){
 
@@ -35,7 +35,7 @@ function App(){
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/reducer" element={<Reducer />}/>
         <Route path="/todo" element={<TodoApp />}/>
-        {/* <Route path="/userform" element={<UserForm />}/> */}
+        <Route path="/userform" element={<UserForm />}/>
 
         <Route path="*" element={<NotFound/>}/>       
       

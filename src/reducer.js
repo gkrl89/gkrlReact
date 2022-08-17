@@ -12,12 +12,16 @@ function Reducer(){
     
 
     const MyFunc = () => {
+        const AddData = (payload)=>{
+            //const resonse = api call
+            dispatch({type:"add", payload:response})
+        }
        
         const [value , dispatch] = useReducer(reducer, initialstate);
         return (
             <div>
                 <h1> Press any value</h1>
-                <Button variant = "primary" onClick={()=>dispatch("add")}>ADD</Button>{' '}
+                <Button variant = "primary" onClick={()=>AddData(payload)}>ADD</Button>{' '}
                 <Button variant = "info"  onClick={()=>dispatch("subtract")}>MINUS</Button>{' '}
                 <Button variant = "success"  onClick={()=>dispatch("multiply")}>PRODUCT</Button>{' '}
                 <p style = {{fontSize: '20px'},{padding:"2px"}}>Output : {value}</p>
@@ -27,9 +31,9 @@ function Reducer(){
 
     } 
     const reducer = (state , action )=> {
-        switch  (action){
+        switch  (action.type){
         case "add":
-        return state + 1 ;
+        return { ...state, action.payload };
         
         case "subtract":
             return state - 1;
