@@ -14,11 +14,11 @@ import ValidatedForm from './validateform';
 import Dashboard from './dashboard';
 import Reducer from './reducer.js';
 import TodoApp from './todo.js';
-import { ReactDOM } from 'react';
-import UserForm from './userform';
+
 import Portal from './portal';
 import SampleApi from './sampleapi';
 import Inventory from './inventory';
+
 
 
 function App(){
@@ -38,7 +38,7 @@ function App(){
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/reducer" element={<Reducer />}/>
         <Route path="/todo" element={<TodoApp />}/>
-        <Route path="/userform" element={<UserForm />}/>
+        
         <Route path="/sampleapi" element={<SampleApi />}/>
         <Route path="/inventory" element={<Inventory />}/>
 

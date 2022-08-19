@@ -2,7 +2,7 @@
 h1{
 
 
-  background-color: rgb(48, 45, 45);
+  background-color: rgb(24, 24, 26);
   color: white;
   border-radius: 5px;
   width: 550px;
@@ -35,6 +35,7 @@ body{
 }
 
 .form__label{
+  color:aliceblue;
   width: 40%;
 }
 
