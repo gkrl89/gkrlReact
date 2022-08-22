@@ -18,14 +18,29 @@ import TodoApp from './todo.js';
 import Portal from './portal';
 import SampleApi from './sampleapi';
 import Inventory from './inventory';
+import Employee from './Employee'
+import AddEmp from './addemp';
+import Emp from './empdetails'
 
 
 
 function App(){
 
   return(
+
     <>
-    <BrowserRouter>
+
+<BrowserRouter>
+
+     
+  
+{/* <Routes>
+  <Route path="/"  element={<Employee/>}/>
+    <Route path="/empdetails" element={<Emp />} />
+    <Route path="/addemp" element={<AddEmp />} />
+    </Routes>
+    </BrowserRouter>
+    <BrowserRouter> */}
 
      
   

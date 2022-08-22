@@ -19,7 +19,7 @@ function ModalForm() {
         <Modal.Header closeButton>
           <Modal.Title>Alert</Modal.Title>
         </Modal.Header>
-        <Modal.Body>User Logged in Successfully</Modal.Body>
+        <Modal.Body>RDetails Added</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
