@@ -1,3 +1,4 @@
+
 export function Reducer(state, action) {
      
     switch (action.type) {
@@ -19,5 +20,7 @@ export function Reducer(state, action) {
           ...state,
           postData: details,
         };
+        default:
+          return state;
     }
   }

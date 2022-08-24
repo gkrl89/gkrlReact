@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState, useReducer ,useContext } from "react";
 import Table from "react-bootstrap/Table";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -7,8 +7,13 @@ import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import UpdatedForm from "./components/formmodal.js";
 import { Reducer } from "./sampleapi.js";
+import withHeading from "./withHeading"
+import { DataContext } from "./DataContext";
 
-function Inventory() {
+function Inventory(props) {
+
+  const msg = useContext(DataContext);
+
   const initialState = {
     postData: [],
   };
@@ -120,6 +125,8 @@ function Inventory() {
        
       }
       <div>
+        <h1>{props.Heading}</h1>
+        <h2>{msg}</h2>
         <Navbar bg="dark" variant="dark">
           <Container>
             <Navbar.Brand href="Home"></Navbar.Brand>
@@ -136,7 +143,7 @@ function Inventory() {
         </Navbar>
       </div>
       <div className="table">
-        <h1>Product Dashboard</h1>
+        <h2 style= {{textAlign:"left"}}>Product Dashboard</h2>
 
         <Table striped bordered hover variant="dark">
           <thead>
@@ -230,4 +237,4 @@ function Inventory() {
   console.log(updatedValues.id);
 }
 
-export default Inventory;
+export default withHeading(Inventory);

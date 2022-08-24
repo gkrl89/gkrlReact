@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import { useState, useReducer } from "react";
+import { useState, useReducer , useContext } from "react";
 import { Container, Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import Inventory from "./inventory";
+// import Inventory from "./inventory";
+import withHeading from "./withHeading"
+import { DataContext } from "./DataContext";
 
 const initialState = {
   postData: [],
@@ -29,7 +31,9 @@ export function Reducer(state, action) {
 }
 
 
-function SampleApi() {
+function SampleApi(props) {
+
+  const msg = useContext(DataContext);
 
   const navigate = useNavigate ;
   const [product, setProduct] = useState({
@@ -78,7 +82,8 @@ function SampleApi() {
   return (
     <>
       <div>
-        <h1>Inventory</h1>
+      <h1>{props.Heading}</h1>
+      <h2>{msg}</h2>
         <Navbar bg="dark" variant="dark">
           <Container>
             <Navbar.Brand href="Home"></Navbar.Brand>
@@ -123,4 +128,4 @@ function SampleApi() {
     </>
   );
 }
-export default SampleApi;
+export default withHeading(SampleApi);

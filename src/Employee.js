@@ -36,6 +36,8 @@ function Employee() {
             </Nav>
           </Container>
         </Navbar>
+
+        <h2 style={{textAlign:"center"}}> Employee Database</h2>
       </div>
     </>
   );

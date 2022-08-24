@@ -11,7 +11,7 @@ import axios from "axios";
 import { Nav, Navbar } from "react-bootstrap";
 import ModalForm from "./components/Modal"
 
-export default function AddEmp(){
+ function AddEmp(){
     const [emp, setEmp] = useState({
         empid: "",
         empname: "",
@@ -25,20 +25,23 @@ export default function AddEmp(){
         postData: [],
       };
 
-      const navigate = useNavigate;
-
+     
+      const navigate = useNavigate();
 
   const [error,setError] = useState();
 
   const [postData, dispatch] = useReducer(Reducer, initialState);
 
-    //   const formCancel = (e) => {
+  const formCancel = (e) => {
 
-    //     e.preventDefault();
+   
 
-    //    navigate("/empdetails");
+    e.preventDefault();
+      
+  console.log("func called");
+   navigate('/');
 
-    //   }
+ }
 
 
       const handleChange = (e) =>{
@@ -131,9 +134,9 @@ export default function AddEmp(){
             <Button variant="primary" type="submit" onClick={formAdd}>
               Add 
             </Button>{" "}
-            {/* <Button variant="dark" type = "submit" onClick={formCancel}>
+            <Button variant="dark" type= "submit" onClick={formCancel}>
               Cancel
-            </Button>{" "} */}
+            </Button>{" "}
           </Form>
           { showModal  && <ModalForm/>}
         </Container>
@@ -142,3 +145,4 @@ export default function AddEmp(){
         </div>
     )
 }
+export default AddEmp

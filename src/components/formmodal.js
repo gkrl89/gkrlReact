@@ -10,6 +10,7 @@ import { useState, useEffect, useReducer } from "react";
 import axios from "axios";
 import { Reducer } from "../empreducers";
 import React from "react";
+import Emp from "../empdetails"
 
 function FormModal(props) {
   const [data, setData] = useState({
@@ -49,6 +50,7 @@ function FormModal(props) {
   };
 
   const ClickUpdate = (props) => {
+    props.SetFormModal(false);
     const id = props.formid;
 
     axios
@@ -61,9 +63,12 @@ function FormModal(props) {
       .then((response) => {
         setUpdate(Math.random());
         console.log(response, "put");
-         dispatch({ type: "edit", payload: response.data });
+        dispatch({ type: "edit", payload: response.data });
+        <Emp update={update}/>
+         
       });
-    props.SetFormModal(false);
+    <Emp update= {update}/>
+    console.log(props.formModal, "false")
   };
 
   const handleClose = () => props.SetFormModal(false);

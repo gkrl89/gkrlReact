@@ -1,82 +1,34 @@
-import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Customer from './Redux/CustHome';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AddCust from  './Redux/AddCust'
+import CustomerList from  './Redux/CustomerList'
+
+// import ImpRoutes from './importsroutes';
+// import { routes } from "./importsroutes";
+
+
+function App() {
   
-} from "react-router-dom"  ;
-import Home from './About'  ;
-import Contact from './Contact'  ;
-import Careers from './careers';
-import NotFound from './notfound'
-import ValidateForm from './newformreg';
-import ValidatedForm from './validateform';
-import Dashboard from './dashboard';
-import Reducer from './reducer.js';
-import TodoApp from './todo.js';
-
-import Portal from './portal';
-import SampleApi from './sampleapi';
-import Inventory from './inventory';
-import Employee from './Employee'
-import AddEmp from './addemp';
-import Emp from './empdetails'
-
-
-
-function App(){
-
-  return(
+  return (
 
     <>
-
-<BrowserRouter>
-
-     
-  
-{/* <Routes>
-  <Route path="/"  element={<Employee/>}/>
-    <Route path="/empdetails" element={<Emp />} />
-    <Route path="/addemp" element={<AddEmp />} />
-    </Routes>
-    </BrowserRouter>
-    <BrowserRouter> */}
-
-     
-  
     <Routes>
-      <Route path="/"  element={<Home/>}/>
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/register" element={<ValidateForm />} />
-        <Route path="/login" element={<ValidatedForm />} />
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/reducer" element={<Reducer />}/>
-        <Route path="/todo" element={<TodoApp />}/>
-        
-        <Route path="/sampleapi" element={<SampleApi />}/>
-        <Route path="/inventory" element={<Inventory />}/>
+   
+    <Route path="/" element={<Customer />} />
+    <Route path="/CustomerList" element={<CustomerList/>} />
+    <Route path="/AddCust" element={<AddCust />} />
 
-        <Route path="*" element={<NotFound/>}/>       
-      
     </Routes>
-   
-   
-  </BrowserRouter> 
-  </>
 
-  )
+    <CustomerList />
+      {/* <Routes>
+        {routes.map((routes) => {
+         return <Route key={routes.path} path={routes.path} element={routes.element} />;
+        })}
+      </Routes> */}
+    </>
+  );
 }
-
-
-
-
-
-      
-   
-      
-  
-
-
 export default App;
-

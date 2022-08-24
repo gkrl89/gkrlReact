@@ -1,0 +1,45 @@
+h1  {
+  background-color: rgb(24, 24, 26);
+  color: white;
+  border-radius: 5px;
+  width :100%;   
+  margin:0 auto; 
+   color: #921212;
+  font-size:1500px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+.colA {
+  
+  background-image: url("../assets/money2.jpg");
+  
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  margin:0 auto;
+  width: 100%;
+  height: 100vh;
+  background-size: contain;
+  background-position: top;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(208, 23, 23);
+  
+}
+.colD{
+  background-image: url("../assets/money-138166.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+margin:0 auto;
+width: 100%;
+height: 100vh;
+background-size: contain;
+background-position: top;
+}
+body {
+    
+    background-color: rgb(18, 16, 16);
+    /* padding: 50px; */
+  }
+

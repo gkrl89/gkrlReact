@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { Reducer } from "./empreducers";
 import FormModal from "./components/formmodal";
 
-export default function Emp() {
+export default function Emp(props) {
   const initialState = {
     postData: [],
   };
@@ -24,18 +24,20 @@ export default function Emp() {
   const [details, setDetails] = useState([]);
   const [number, setNumber] = useState();
 
+  const random = props.update
+
   useEffect(() => {
     axios
       .get("https://62fb40bbabd610251c040f32.mockapi.io/Employee")
       .then((response) => {
-        // console.log('response', response.data)
+        console.log('response', response.data)
         setDetails(response.data);
       })
       .catch((err) => {
         console.log(err);
         setError("Something went wrong");
       });
-  }, []);
+  }, [random]);
 
   const ClickEdit = (number) => {
     SetFormModal(true);
