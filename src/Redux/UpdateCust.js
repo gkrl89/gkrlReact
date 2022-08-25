@@ -1,68 +1,79 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { Container } from "react-bootstrap";
-import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
-import { Nav, Navbar } from "react-bootstrap";
+import { Container , Button ,Form } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {  CreateCustomer } from "./slices";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
+import { Nav, Navbar } from "react-bootstrap";
+import {useSelector , useDispatch} from "react-redux"
+import CustService from "./services";
+import { updateCustomer } from "./slices";
+function UpdateCust () {
 
-function AddCust() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [cust, setCust] = useState({
-    custid: "",
-    custname: "",
-    accno: "",
-    add: "",
-    phone: "",
-    mail: "",
-  });
+        const dispatch = useDispatch();
+        const params = useParams();
+        const navigate = useNavigate();
 
-  
 
-  const ClickAdd = (e) => {
-    e.preventDefault();
-    const { custid, custname, accno, add, phone, mail } = cust;
-    // dispatch(addCust({custid,custname,accno,add,phone,mail}))
-    dispatch(CreateCustomer({ custid, custname, accno, add, phone, mail }))
-      .unwrap()
-      .then((data) => {
-        console.log(data);
-        setCust({
-          custid: data.id,
-          custname: data.custname,
-          accno: data.accno,
-          add: data.add,
-          phone: data.phone,
-          mail: data.mail,
+        const [newdata, setNewData] = useState({
+          custid: "",
+          custname: "",
+          accno: "",
+          add: "",
+          phone: "",
+          mail: "",
         });
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-     
-  };
+   
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-
-    setCust(() => {
-      return {
-        ...cust,
-        [name]: value,
+    const getCust = id => {
+        CustService.get(id)
+          .then(response => {
+            setNewData(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });
       };
-    });
-  };
+    //  console.log(params.id);
+      useEffect(() => {
+        getCust(params.id);
+      }, [params.id]);
 
-  return (
-    <div>
-      <Navbar bg="dark" variant="dark">
+    const handleChange = (e) => {
+        
+        const { value, name } = e.target;
+
+        setNewData(() => {
+          return {
+            ...newdata,
+            [name]: value,
+          };
+        });
+      };
+
+      const ClickUpdate = (e) => {
+
+        e.preventDefault();
+
+         
+           dispatch(updateCustomer({ id: newdata.custid, data: newdata }))
+          .unwrap()
+          .then(response => {
+            console.log(response);
+            
+            navigate("/CustomerList");
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      };
+
+    
+    return(
+        <>
+        <div>
+            <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="Home"></Navbar.Brand>
           <Nav>
@@ -87,7 +98,7 @@ function AddCust() {
         <Col className="colD"></Col>
         <Col>
           <Container>
-            <h2> Add Customer</h2>
+            <h2> Update Customer Details</h2>
             <Form>
               <Form.Group className="my - 5" controlId="item">
                 <Form.Label style={{ fontSize: "20px" }}>
@@ -97,7 +108,7 @@ function AddCust() {
                 <Form.Control
                   type="text"
                   name="custname"
-                  value={cust.custname}
+                  value={newdata.custname}
                   onChange={handleChange}
                 ></Form.Control>
               </Form.Group>
@@ -109,7 +120,7 @@ function AddCust() {
                 <Form.Control
                   type="text"
                   name="accno"
-                  value={cust.accno}
+                  value={newdata.accno}
                   onChange={handleChange}
                 ></Form.Control>
               </Form.Group>
@@ -118,7 +129,7 @@ function AddCust() {
                 <Form.Control
                   type="text"
                   name="add"
-                  value={cust.add}
+                  value={newdata.add}
                   onChange={handleChange}
                 ></Form.Control>
               </Form.Group>
@@ -130,7 +141,7 @@ function AddCust() {
                 <Form.Control
                   type="text"
                   name="phone"
-                  value={cust.phone}
+                  value={newdata.phone}
                   onChange={handleChange}
                 ></Form.Control>
               </Form.Group>
@@ -139,25 +150,27 @@ function AddCust() {
                 <Form.Control
                   type="text"
                   name="mail"
-                  value={cust.mail}
+                  value={newdata.mail}
                   onChange={handleChange}
                 ></Form.Control>
               </Form.Group>
               <Button
                 variant="primary"
                 type="submit"
-                onClick={(e) => ClickAdd(e)}
-              >
-                Add
+                onClick={ClickUpdate}              >
+                Update
               </Button>{" "}
-              <Button variant="dark" type="submit" onClick={() => navigate("/")}>
-                Cancel
+              <Button variant="dark" type="submit"  onClick={() => navigate("/CustomerList")} >
+                Cancel 
               </Button>{" "}
             </Form>
           </Container>
         </Col>
       </Row>
     </div>
-  );
+    </>
+
+             )
+
 }
-export default AddCust;
+export default UpdateCust;

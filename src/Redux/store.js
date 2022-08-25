@@ -1,12 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
-import custReducer from "./slices";
+import custSlice from "./slices";
 
-const reducer = {
-    Customer: custReducer
-  }
+
   
   const store = configureStore({
-    reducer: reducer,
+    reducer: {custstate : custSlice},
     devTools: true,
   })
   

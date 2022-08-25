@@ -1,6 +1,6 @@
 import React from "react";
 import {useEffect, useState, useCallback} from "react"; 
-import { retrieveCustomer } from "./slices";
+import { retrieveCust ,retrieveCustomer ,deleteCustomer} from "./slices";
 import {useSelector,useDispatch} from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -8,19 +8,35 @@ import { Nav, Navbar } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Button , Container } from "react-bootstrap";
 
+
 function CustomerList(){
 
-    const cust = useSelector(state => state.cust);
+    const cust = useSelector(state => state.custstate);
+    const [num, setNum] = useState();
+    const navigate=useNavigate();
 
     const dispatch = useDispatch();
 
   const initFetch = useCallback(() => {
     dispatch(retrieveCustomer());
-  }, [dispatch])
+      }, [dispatch])
 
   useEffect(() => {
     initFetch()
   }, [initFetch])
+
+    const deleteCust = (number) => {
+      console.log("num", number)
+    dispatch(deleteCustomer({ id: number }))
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
 
     return(
         <>
@@ -63,8 +79,8 @@ function CustomerList(){
           </thead>
           <tbody>
             {cust?.map((cust, id) => {
-              const number = cust.id;
-              // console.log(number,"number")
+             const number = cust.custid;
+              console.log(number,"number")
               return (
                 <tr key={id}>
                   <td>{id + 1}</td>
@@ -74,19 +90,19 @@ function CustomerList(){
                   <td>{cust.phone}</td>
                   <td>{cust.mail}</td>
                   <td>
+                  
                     <Button
                       variant="primary"
                       type="submit"
-                      >
-                      Edit
+                      onClick={() => navigate("/UpdateCust/" + cust.custid)}>
+                         Edit
                     </Button>{" "}
                   </td>
                   <td>
                     <Button
                       variant="danger"
                       type="submit"
-                      >
-                      Delete
+                      onClick = {()=>deleteCust(number)}>                     Delete
                     </Button>{" "}
                   </td>
                 </tr>
