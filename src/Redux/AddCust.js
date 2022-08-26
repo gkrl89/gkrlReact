@@ -46,6 +46,7 @@ function AddCust() {
       .catch((e) => {
         console.log(e);
       });
+      navigate("/CustomerList")
      
   };
 
