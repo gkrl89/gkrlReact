@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+// import ReactDOM from "react-dom";
+
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -14,7 +16,16 @@ import store from "../src/Redux/store"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.getElementById('root')
+// );
   <React.StrictMode>
+
 
 {/* <DataContext.Provider value="You are accessing Product Information."> */}
     <Provider store={store}>
@@ -24,6 +35,7 @@ root.render(
     </Provider>
     {/* </DataContext.Provider> */}
   </React.StrictMode>
+ 
  
 );
 // const rootportal = ReactDOM.createRoot(document.getElementById('portal'));

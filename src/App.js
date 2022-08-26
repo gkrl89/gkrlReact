@@ -19,11 +19,11 @@ function App() {
 
     
     <Routes>
-    {/* <Route path="/" element={<Counter appState={appState} />} /> */}
-    <Route path="/" element={<Customer />} />
+    <Route path="/" element={<Counter appState={appState} />} />
+    {/* <Route path="/" element={<Customer />} />
     <Route path="/CustomerList" element={<CustomerList/>} />
     <Route path="/AddCust" element={<AddCust />} />
-    <Route path="/UpdateCust/:id" element={<UpdateCust />} />
+    <Route path="/UpdateCust/:id" element={<UpdateCust />} /> */}
 
     </Routes>
   
