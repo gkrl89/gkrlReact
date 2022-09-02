@@ -15,7 +15,7 @@ function ModalForm() {
     <>
     
     
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal data-testid="modal" show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Alert</Modal.Title>
         </Modal.Header>

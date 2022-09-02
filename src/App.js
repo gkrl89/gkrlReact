@@ -1,3 +1,5 @@
+import React from "react";
+import { ReactDOM } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Customer from './Redux/CustHome';
@@ -9,6 +11,7 @@ import Counter from './mobxcounter'
 import appState from "./mcounter";
 import ImpRoutes from './importsroutes';
 import { routes } from "./importsroutes";
+import ValidatedForm from "./newreg";
 
 
 function App() {
@@ -17,15 +20,18 @@ function App() {
 
    <>
 
+   <ValidatedForm />
+
     
-    <Routes>
+    {/* <Routes>
     <Route path="/" element={<Counter appState={appState} />} />
-    {/* <Route path="/" element={<Customer />} />
+    <Route path="/" element={<Customer />} />
     <Route path="/CustomerList" element={<CustomerList/>} />
     <Route path="/AddCust" element={<AddCust />} />
-    <Route path="/UpdateCust/:id" element={<UpdateCust />} /> */}
+    <Route path="/UpdateCust/:id" element={<UpdateCust />} /> 
+    </Routes>*/}
 
-    </Routes>
+    
   
       {/* <Routes>
         {routes.map((routes) => {

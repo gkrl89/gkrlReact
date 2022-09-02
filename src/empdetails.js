@@ -61,6 +61,10 @@ export default function Emp(props) {
     setDetails(details.filter((emp) => emp.id !== number));
   };
 
+  const getDataFromChild = (index) => {
+    console.log(index, "index");
+  }
+
   
 
   return (
@@ -87,6 +91,7 @@ export default function Emp(props) {
             <FormModal
               formid={number}
               formModal={formModal}
+              getDataFromChild={getDataFromChild}
               SetFormModal={SetFormModal}
                          />
           </Container>

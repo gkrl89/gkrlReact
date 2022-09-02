@@ -31,10 +31,10 @@ export const CreateCustomer = createAsyncThunk(
   );
   export const deleteCustomer = createAsyncThunk(
     "cust/delete",
-    async ({ id }) => {
-      await CustService.remove(id);
-      console.log("deleted" ,id )
-      return { id };
+    async ({ id , data }) => {
+     await CustService.remove(id);
+      console.log("deleted" ,data)
+      return (id, data) ;
     }
   );
  
@@ -50,12 +50,13 @@ export const CreateCustomer = createAsyncThunk(
         
       },
       [deleteCustomer.fulfilled]: (state, action) => {
-        let index = state.findIndex(({ id }) => id === action.payload.id);
-        state.splice(index, 1);
+       console.log("iddddddd", )
         
+       state= action.data       
       },
       [updateCustomer.fulfilled]: (state, action) => {
         const index = state.findIndex(cust => cust.custid === action.payload.id);
+        console.log("State" , index)
         state[index] = {
           ...state[index],
           ...action.payload,

@@ -10,27 +10,33 @@ import { Button , Container } from "react-bootstrap";
 
 
 function CustomerList(){
-
+  const [update, setUpdate] = useState("")
     const cust = useSelector(state => state.custstate);
-    const [num, setNum] = useState();
+   
+   
     const navigate=useNavigate();
 
     const dispatch = useDispatch();
 
   const initFetch = useCallback(() => {
     dispatch(retrieveCustomer());
-      }, [dispatch])
+      }, [dispatch, update])
 
   useEffect(() => {
     initFetch()
   }, [initFetch])
 
     const deleteCust = (number) => {
-      console.log("num", number)
-    dispatch(deleteCustomer({ id: number }))
+
+     const data = cust.filter(data => data.custid !== number)
+     console.log("DADADADAD" ,data)
+        
+    dispatch(deleteCustomer({ id: number , data}))
       .unwrap()
       .then((res) => {
         console.log(res);
+        setUpdate(Math.random())
+
       })
       .catch(e => {
         console.log(e);
@@ -80,10 +86,10 @@ function CustomerList(){
           <tbody>
             {cust?.map((cust, id) => {
              const number = cust.custid;
-              console.log(number,"number")
+              // console.log(number,"number")
               return (
                 <tr key={id}>
-                  <td>{id + 1}</td>
+                  <td>{cust.custid}</td>
                   <td>{cust.custname}</td>
                   <td>{cust.accno}</td>
                   <td>{cust.add}</td>
@@ -102,7 +108,7 @@ function CustomerList(){
                     <Button
                       variant="danger"
                       type="submit"
-                      onClick = {()=>deleteCust(number)}>                     Delete
+                      onClick = {()=>deleteCust(cust.custid)}>                     Delete
                     </Button>{" "}
                   </td>
                 </tr>

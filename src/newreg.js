@@ -11,13 +11,14 @@ import Modalform from './components/Modal';
 
 
 
-function ValidateForm() {
+function ValidatedForm( ) {
   const [username, setName] = useState('');
   const [mobileno, setNum] = useState('');
   const [email, setEmail]= useState('');
   const [pwd, setPwd] = useState('');
   const [cpwd, setCpwd] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const[msg, setMsg] = useState("");
  
   
   const [error, setError] = useState({
@@ -37,9 +38,11 @@ function ValidateForm() {
   const onSubmit = (e) => {
     e.preventDefault();
     
+    setMsg("Registration Form")
+
+
+    
     const isValid = formValidation();
-    
-    
 
 
     }
@@ -123,50 +126,51 @@ function ValidateForm() {
           }
             
             
-  
+  console.log("showModal",showModal)
         
               
           return (
 
                 <>
         <h1> My Form</h1>
+        <h2 data-testid = 'val'>{msg}</h2>
         <Container>
              <Form>
             
            
-             <Form.Group className="mb-3" controlId="username">
+             <Form.Group className="mb-3" >
              <Form.Label>User Name</Form.Label>
-             <Form.Control type="text"  required onChange={(e)=>{setName(e.target.value)}} placeholder='Enter User Name'/>
+             <Form.Control type="text" data-testid = "username-input" required onChange={(e)=>{setName(e.target.value)}} placeholder='Enter User Name'/>
              <div style={{color:"red"}}>{error.username}</div>
              </Form.Group>
 
              <Form.Group className="mb-3" controlId="mobileno"  >
              <Form.Label>Mobile Number</Form.Label>
-             <Form.Control type="tel" required onChange={(e)=>{setNum(e.target.value)}} placeholder = '123-456-7890'/>
+             <Form.Control type="tel" data-testid = "mobileno-input" required onChange={(e)=>{setNum(e.target.value)}} placeholder = '123-456-7890'/>
              <div style={{color:"red"}}>{error.mobileno}</div>
              </Form.Group>
 
              <Form.Group className="mb-3" controlId="email"  >
              <Form.Label>Email Address</Form.Label>
-             <Form.Control type="email" required onChange={(e)=>{setEmail(e.target.value)}} />
+             <Form.Control type="email" data-testid = "email-input" required onChange={(e)=>{setEmail(e.target.value)}} />
              <div style={{color:"red"}}>{error.email}</div>
              </Form.Group>
 
              <Form.Group className="mb-3" controlId="pwd"  >
              <Form.Label>Password</Form.Label>
-             <Form.Control type="password" required onChange={(e)=>{setPwd(e.target.value)}} />
+             <Form.Control type="password" data-testid = "password-input " required onChange={(e)=>{setPwd(e.target.value)}} />
              <div style={{color:"red"}}>{error.pwd}</div>
              </Form.Group>
 
              <Form.Group className="mb-3" controlId="cpwd"  >
              <Form.Label>Confirm Password</Form.Label>
-             <Form.Control type="password" required onChange={(e)=>{setCpwd(e.target.value)}} />
+             <Form.Control type="password" data-testid = "cpassword-input" required onChange={(e)=>{setCpwd(e.target.value)}} />
              <div style={{color:"red"}}>{error.cpwd}</div>
              <div style={{color:"red"}}>{error.matchPwd}</div>
              
              </Form.Group>
 
-             <Button variant="primary" type="submit" onClick={onSubmit}>Login
+             <Button variant="primary" type="submit" data-testid = "submit" onClick={onSubmit}>Register
              </Button>{' '}
              <Button variant="secondary" type="reset">
              Reset
@@ -180,4 +184,4 @@ function ValidateForm() {
           
         
              
-            export default ValidateForm;
+            export default ValidatedForm;
